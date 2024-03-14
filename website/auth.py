@@ -24,7 +24,6 @@ def login():
                 flash('Incorrect password, try again.', category='error')
         else:
             flash('Email does not exist.', category='error')
-
     return render_template("login.html", user=current_user)
 
 
@@ -48,7 +47,7 @@ def sign_up():
             flash('Email already exists.', category='error')
         elif len(email) < 4:
             flash('Email must be greater than 3 characters.', category='error')
-        elif len(first_name) < 2:
+        elif len(first_name)==0:
             flash('First name must be greater than 1 character.', category='error')
         elif password1 != password2:
             flash('Passwords don\'t match.', category='error')

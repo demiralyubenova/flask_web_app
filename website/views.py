@@ -35,3 +35,8 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+
+@views.route('/tickets')
+def ticket():
+    return render_template("ticketi.html")
