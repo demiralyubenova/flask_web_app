@@ -1,0 +1,258 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #343a40;
+  position: relative;
+  font-weight: 600;
+}
+
+body{
+  background: fixed;
+  background-size: 100%;
+  background: rgb(1, 15, 1);
+}
+
+
+
+.navbar-dark .navbar-nav .nav-link {
+  color: black;
+  position: relative;
+  font-size: 1em;
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 40px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #f8f9fa;
+  font-weight: 600;
+}
+
+.wrapper{
+  margin-top: 50px;
+  position: relative;
+  width: 500px;
+  height: 700px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px black;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(51, 8, 51);
+}
+
+.wrapper-login{
+  margin-top: 90px;
+  position: relative;
+  width: 400px;
+  height: 500px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px black;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b0529;
+}
+
+
+.wrapper .form-box{
+  width: 100%;
+  padding: 40px;
+}
+  
+.form-box h2{
+  margin-top: 70px;
+  font-size: 2em;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.form-box-login h2{
+  margin-top: 80px;
+  font-size: 2em;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.input-box{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  margin: 30px 0;
+}
+
+.input-box-login{
+  position: relative;
+  width: 80%;
+  height: 50px;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  margin: 30px 35px;
+}
+
+.input-box label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  font-size: 1em;
+  color: rgb(255, 255, 255);
+  transform: translateY( -50%);
+  font-weight: 500;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.input-box-login label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  font-size: 1em;
+  color: rgb(255, 255, 255);
+  transform: translateY( -50%);
+  font-weight: 500;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:not(:placeholder-shown)~label{
+  top: -5px; 
+}
+
+.input-box-login input:focus::after~label,
+.input-box-login input:not(:placeholder-shown)~label{
+  top: -5px; 
+}
+
+.input-box input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: black;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+
+
+.input-box-login input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: black;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+.input-box.icon{
+  position: absolute;
+  right: 8px;
+  font-size: 1.2em;
+  color: black;
+  line-height: 57px;
+}
+
+
+.btn{
+  width: 100%;
+  height: 45px;
+  background: rgb(0, 0, 0);
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  color: aliceblue;
+  font-weight: 500;
+}
+
+.btn-login{
+  width: 80%;
+  height: 45px;
+  background: rgb(0, 0, 0);
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  color: aliceblue;
+  font-weight: 500;
+  margin: 15px 35px
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+}
+
+.alert-success {
+  background-color: #d4edda;
+}
+
+.close {
+  color: #721c24;
+}
+
+.close:hover {
+  color: #dc3545;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  text-decoration: none;
+  color: #333;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+
+.description {
+  flex: 1;
+}
+
+.description h4 {
+  margin-bottom: 10px;
+}
+
+.description p {
+  margin-bottom: 0;
+}
+
