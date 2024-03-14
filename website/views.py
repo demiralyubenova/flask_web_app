@@ -38,5 +38,18 @@ def delete_note():
 
 
 @views.route('/tickets')
-def ticket():
-    return render_template("ticketi.html")
+def tickets():
+    return render_template("tickets.html")
+
+@views.route('/programa_dnevnik')
+def programa_dnevnik():
+    return render_template("programa_dnevnik.html")
+
+@views.route('/menu')
+def menu():
+    return render_template("menu.html")
+
+@views.route('/calendar_to_do_list')
+def calendar_to_do_list():
+    return render_template("calendar_to_do_list.html")
+
