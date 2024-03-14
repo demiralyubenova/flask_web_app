@@ -127,7 +127,7 @@ body{
   top: -5px; 
 }
 
-.input-box-login input:focus::after~label,
+.input-box-login input:focus~label,
 .input-box-login input:not(:placeholder-shown)~label{
   top: -5px; 
 }
