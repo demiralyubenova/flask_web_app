@@ -70,7 +70,7 @@ def market_page():
                 flash(f"Something went wrong with selling {s_item_object.name}", category='danger')
 
 
-        return redirect(url_for('menu'))
+        return redirect(url_for('views.market_page'))
 
     
     items = Item.query.filter_by(owner=None)

@@ -231,3 +231,10 @@ element.style{
   margin-bottom: 0;
 }
 
+.btn btn-outline-succes{
+  border-bottom-color: #3b0460 !important;
+  border-left-color: #3b0460 !important;
+  border-left-color: #3b0460 !important;
+  color: #3b0460 !important;
+}
+
