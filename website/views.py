@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
-from .models import Note, Item, UserItemRelationship, User
+from .models import Note, Item, UserItemRelationship, User, Grades
 from . import db
 import sys
 
@@ -29,16 +29,40 @@ def delete_note():
 
 
 @views.route('/tickets')
+@login_required
 def tickets():
     return render_template("tickets.html")
 
-@views.route('/programa_dnevnik')
-def programa_dnevnik():
-    return render_template("programa_dnevnik.html")
+@views.route('/gradebook', methods = ["GET", "POST"])
+@login_required
+def gradebook():
+    if current_user.role == 0:
+        student_grades = Grades.query.filter_by(student_id=current_user.id).all()
+        grades_dict = {}     
+        for grade in student_grades:
+            if grade.subject not in grades_dict:
+                grades_dict[grade.subject] = []
+            grades_dict[grade.subject].append(grade.grade)
+            db.session.add(grade)
+            db.session.commit()
+            return render_template("gradebook.html", grades = grades_dict, current_user = current_user)
+    else:
+        students = User.query.filter_by(role=0).all()    
+        if request.method == "POST":
+            grade = request.form.get('grade')
+            name = request.form.get('student.first_name')
+            subject = request.form.get('subject-select')
+            new_grade = Grades(grade = grade, student_id = name, subject = subject, teacher_id = current_user.first_name)
+            db.session.add(new_grade)
+            db.session.commit()
+        return render_template("gradebook.html", current_user=current_user, students=students)
+    
+    return render_template("gradebook.html", current_user = current_user)
 
 
 
 @views.route('/calendar_to_do_list')
+@login_required
 def calendar_to_do_list():
     return render_template("calendar_to_do_list.html")
 
@@ -67,5 +91,6 @@ def market_page():
     items = Item.query.filter_by()
     owned_items = Item.query.join(UserItemRelationship).join(User).filter(UserItemRelationship.user_id == current_user.id).all()
     return render_template('menu.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
+
 
 

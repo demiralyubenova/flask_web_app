@@ -44,5 +44,6 @@ h2{
 }
 
 .asbtn:hover {
-    background-color:#7b16be;
+    background-color:#7b16be !important;
+  
 }

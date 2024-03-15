@@ -1,6 +1,7 @@
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
+from sqlalchemy import Float
 import datetime
 
 
@@ -42,3 +43,10 @@ class UserItemRelationship(db.Model):
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     item_id = db.Column(db.Integer(), db.ForeignKey('item.id'))
     date_time = db.Column(db.DateTime(timezone=True), default=datetime.datetime.now)
+
+class Grades(db.Model):
+    id = db.Column(db.Integer(), primary_key = True)
+    teacher_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    student_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    subject = db.Column(db.String(15), nullable = False)
+    grade = db.Column(db.Float(), default = 2.0)
