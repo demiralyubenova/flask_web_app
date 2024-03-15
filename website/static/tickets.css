@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .wrapper-tickets{
+    margin-top: 80px;
+    position: fixed;
+    width: 1000px;
+    height: 600px;
+    border: 2px outset rgb(233, 233, 233);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 30px black;
+    justify-content: center;
+    align-items: center;
+    background-color: #aa930d;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .container-tickets {
+    position: relative;
+  }
+  
+  .radio-buttons {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+  }
+  
+  label {
+    position: absolute;
+    cursor: pointer;
+  }
+  
+  /*input[type="radio"] {
+    /*visibility: hidden;
+  }*/
+  
+  label:nth-of-type(1) {
+    top: 50px;
+    left: 30px;
+  }
+  
+  label:nth-of-type(2) {
+    top: 50px;
+    left: 150px;
+  }
+
+  label:nth-of-type(3) {
+    top: 50px;
+    left: 280px;
+  }
