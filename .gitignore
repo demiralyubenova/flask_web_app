@@ -1,0 +1,5 @@
+database
+./__pycache__
+/website/__pycache__
+/website/__pycache__
+instance/database.db
