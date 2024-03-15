@@ -20,7 +20,7 @@ body {
   margin-top: 80px;
   position: fixed;
   width: 500px;
-  height: 600px;
+  height: 700px;
   border: 2px outset rgb(233, 233, 233);
   border-radius: 20px;
   backdrop-filter: blur(5px);
@@ -159,7 +159,7 @@ element.style{
 }
 
 
-.btn{
+.Btn{
   width: 100%;
   height: 45px;
   background: aliceblue;
@@ -168,7 +168,7 @@ element.style{
   border-radius: 6px;
   cursor: pointer;
   font-size: 1em;
-  color: black;
+  color: rgb(89, 52, 174);
   font-weight: 700;
 }
 

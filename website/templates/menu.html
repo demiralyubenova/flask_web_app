@@ -74,6 +74,24 @@ MENU Page
            </div>
       </div>
    </div>
-</body>
-</html>
+   <div class="col-4">
+        <h2>Ordered Food</h2>
+        <br>
+        <div class="row">
+           {% for owned_item in owned_items %}
+             <div class="col-md-6">
+                 <div style="margin-bottom: 5px" class="card text-center bg-dark">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ owned_item.name }}</h5>
+                          
+                          <p class="card-text"><strong>
+                              This item costs {{ owned_item.price }}$
+                          </strong></p>
+                      </div>
+                  </div>
+             </div>
+           {% endfor %}
+        </div>
+   </div>
+</div>
 {% endblock %}
