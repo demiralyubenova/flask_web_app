@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Smart_PomoOsht_School",
+			"path": "."
+		},
+		{
+			"name": "website",
+			"path": "../../../Downloads/flask_web_app_zip_na_14.3_v_16_32/flask_web_app_otmariq/website"
+		}
+	],
+	"settings": {}
+}
