@@ -18,6 +18,8 @@ class User(db.Model, UserMixin):
     notes = db.relationship('Note')
     budget = db.Column(db.Integer, default = 20)
 
+    
+
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(length=30), nullable=False, unique=True)
@@ -31,9 +33,4 @@ class Item(db.Model):
     def buy(self, user):
         self.owner = user.id
         user.budget -= self.price
-        db.session.commit()
-
-    def sell(self, user):
-        self.owner = None
-        user.budget += self.price
         db.session.commit()
