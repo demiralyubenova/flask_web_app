@@ -23,6 +23,19 @@
     </div>
     <div class="input-box">
       <input
+        id="role"
+        list = "roles"
+        name="role"
+        placeholder=""
+      />
+      <datalist id = "roles">
+        <option value = "Student">
+        <option value = "Teacher">
+      </datalist>
+      <label for="role" >Student or Teacher</label>
+    </div>
+    <div class="input-box">
+      <input
         type="password"
         name="password1"
         placeholder=""
@@ -38,7 +51,7 @@
       <label for="password2">Password (Confirm)</label>
     </div>
     <br />
-    <button type="submit" class="btn">Submit</button>
+    <button type="submit" class="Btn">Submit</button>
   </form>
 </div>
   {% endblock %}

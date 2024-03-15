@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
-from .models import Note, Item
+from .models import Note, Item, UserItemRelationship, User
 from . import db
 import sys
 
@@ -45,7 +45,6 @@ def calendar_to_do_list():
 @views.route('/menu', methods=['GET', 'POST'])
 @login_required
 def market_page():
-    ##import ipdb; ipdb.set_trace()
     purchase_form = PurchaseItemForm()
     selling_form = SellItemForm()
     if request.method == "POST":
@@ -54,30 +53,19 @@ def market_page():
         p_item_object = Item.query.filter_by(name=purchased_item).first()
         if p_item_object:
             if current_user.budget >= (p_item_object.price):
-                
                 p_item_object.buy(current_user)
+                new_relationship = UserItemRelationship(user_id = current_user.id, item_id = p_item_object.id)
+                db.session.add(new_relationship)
+                db.session.commit()
                 flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}$", category='success')
             else:
-                flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}!", category='danger')
-        #Sell Item Logic
-        sold_item = request.form.get('sold_item')
-        s_item_object = Item.query.filter_by(name=sold_item).first()
-        if s_item_object:
-            if current_user.can_sell(s_item_object):
-                s_item_object.sell(current_user)
-                flash(f"Congratulations! You sold {s_item_object.name} back to market!", category='success')
-            else:
-                flash(f"Something went wrong with selling {s_item_object.name}", category='danger')
+                flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}! You have {current_user.budget}$!", category='error')
 
-
-        return redirect(url_for('menu'))
+        return redirect(url_for('views.market_page'))
 
     
-    items = Item.query.filter_by(owner=None)
-    ##items = Item.query.first()
-    print("heopfen", file = sys.stderr)
-    owned_items = Item.query.filter_by(owner=current_user.id)
-    print(owned_items)
+    items = Item.query.filter_by()
+    owned_items = Item.query.join(UserItemRelationship).join(User).filter(UserItemRelationship.user_id == current_user.id).all()
     return render_template('menu.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
 
 
