@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request, flash, jsonify, redirect,
 from flask_login import login_required, current_user
 from .models import Note, Item
 from . import db
+import sys
+
 import json
 from .forms import PurchaseItemForm, SellItemForm
 views = Blueprint('views', __name__)
@@ -34,17 +36,16 @@ def tickets():
 def programa_dnevnik():
     return render_template("programa_dnevnik.html")
 
-@views.route('/menu')
-def menu():
-    return render_template("menu.html")
+
 
 @views.route('/calendar_to_do_list')
 def calendar_to_do_list():
     return render_template("calendar_to_do_list.html")
 
-@views.route('/market', methods=['GET', 'POST'])
+@views.route('/menu', methods=['GET', 'POST'])
 @login_required
 def market_page():
+    ##import ipdb; ipdb.set_trace()
     purchase_form = PurchaseItemForm()
     selling_form = SellItemForm()
     if request.method == "POST":
@@ -68,11 +69,14 @@ def market_page():
                 flash(f"Something went wrong with selling {s_item_object.name}", category='danger')
 
 
-        return redirect(url_for('market_page'))
+        return redirect(url_for('menu'))
 
-    if request.method == "GET":
-        items = Item.query.filter_by(owner=None)
-        owned_items = Item.query.filter_by(owner=current_user.id)
-        return render_template('market.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
+    
+    items = Item.query.filter_by(owner=None)
+    ##items = Item.query.first()
+    print("heopfen", file = sys.stderr)
+    owned_items = Item.query.filter_by(owner=current_user.id)
+    print(owned_items)
+    return render_template('menu.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
 
 

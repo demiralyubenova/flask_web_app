@@ -46,7 +46,15 @@ body {
   background: transparent;
 }
 
-
+.modal-body{
+  color:white;
+}
+element.style{
+  color:white !important;
+}
+.modal-header{
+  color:white;
+}
 .wrapper .form-box{
   width: 100%;
   padding: 40px;

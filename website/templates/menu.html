@@ -4,7 +4,7 @@ MENU Page
 {% endblock %}
 {% block content %}
 
-<div class="row" style="margin-top:20px; margin-left:20px">
+<div class="row" style="margin-top:20px; margin-left:10px">
    <div class="col-8">
        <h2>Available items on the MENU</h2>
        <p>Click on one of the items to start buying</p>
@@ -21,16 +21,20 @@ MENU Page
             </tr>
          </thead>
          <tbody>
+           
             <!-- Your rows inside the table HERE: -->
             {% for item in items %}
             {% include 'includes/items_modals.html' %}
+         
             <tr>
+             
                <td>{{ item.id }}</td>
                <td>{{ item.name }}</td>
                <td>{{ item.barcode }}</td>
                <td>{{ item.price }}$</td>
                <td>
-                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+                 
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">Ingredients</button>
                   <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Purchase this Item</button>
                </td>
             </tr>
