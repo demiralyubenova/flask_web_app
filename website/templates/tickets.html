@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}
+Tickets Page
+{% endblock %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,70 +12,99 @@
     <title>Ticket system</title>
 </head>
 <body>
-    <div class="wrapper-tickets">
+  <div class="wrapper-tickets">
+    <span class="teacher">
+        <img src="static/school1.jpg" alt="teachers desk">
+        <label for="picture"><a href="/chat-with-teacher" id="BTN" name="options" ><input type="button" id="optiont" name="options"></a></label>
+    </span>
     <div class="container-tickets">
         <div class="classroom">
-            <img src="static/school1.jpg" alt="Picture with radio buttons">
+            <img src="static/school2.jpg" alt="Picture with button buttons">
         </div> 
       <div class="radio-buttons">
         <label for="option1">
-          <input type="radio" id="option1" name="options">
+          <a href="/chat-with-teacher" id="BTN" name="options" >
+            <input type="button" id="option1" name="options">
+          </a>FJ19
         </label>
         <label for="option2">
-            <input type="radio" id="option2" name="options">
-          </label>
-          <label for="option3">
-            <input type="radio" id="option3" name="options">
+          <a href="/chat-with-teacher" id="BTN" name="options" >
+            <input type="button" id="option2" name="options">
+          </a>FJ22
+        </label>
+        <label for="option3">
+          <a href="/chat-with-teacher" id="BTN" name="options" >
+            <input type="button" id="option3" name="options">
+          </a>FJ08
         </label>
       </div>
     </div>
     <div class="container-tickets">
         <div class="classroom">
-            <img src="static/school1.jpg" alt="Picture with radio buttons">
+            <img src="static/school2.jpg" alt="Picture with button buttons">
         </div> 
-      <div class="radio-buttons">
-        <label for="option1">
-          <input type="radio" id="option1" name="options">
-        </label>
-        <label for="option2">
-            <input type="radio" id="option2" name="options">
+        <div class="radio-buttons">
+          <label for="option1">
+            <a href="/chat-with-teacher" id="BTN" name="options" >
+              <input type="button" id="option1" name="options">
+            </a>FJ15
+          </label>
+          <label for="option2">
+            <a href="/chat-with-teacher" id="BTN" name="options" >
+              <input type="button" id="option2" name="options">
+            </a>FJ04
           </label>
           <label for="option3">
-            <input type="radio" id="option3" name="options">
-        </label>
-      </div>
+            <a href="/chat-with-teacher" id="BTN" name="options" >
+              <input type="button" id="option3" name="options">
+            </a>FJ09
+          </label>
+        </div>
     </div>
     <div class="container-tickets">
         <div class="classroom">
-            <img src="static/school1.jpg" alt="Picture with radio buttons">
+            <img src="static/school2.jpg" alt="Picture with button buttons">
         </div> 
-      <div class="radio-buttons">
-        <label for="option1">
-          <input type="radio" id="option1" name="options">
-        </label>
-        <label for="option2">
-            <input type="radio" id="option2" name="options">
+        <div class="radio-buttons">
+          <label for="option1">
+            <a href="/chat-with-teacher" id="BTN" name="options" >
+              <input type="button" id="option1" name="options">
+            </a>FJ18
+          </label>
+          <label for="option2">
+            <a href="/chat-with-teacher" id="BTN" name="options" >
+              <input type="button" id="option2" name="options">
+            </a>FJ01
           </label>
           <label for="option3">
-            <input type="radio" id="option3" name="options">
-        </label>
-      </div>
-    </div>
+            <a href="/chat-with-teacher" id="BTN" name="options" >
+              <input type="button" id="option3" name="options">
+            </a>FJ26
+          </label>
+        </div>
+    </div> 
     <div class="container-tickets">
         <div class="classroom">
-            <img src="static/school1.jpg" alt="Picture with radio buttons">
-        </div> 
+        <img src="static/school2.jpg"  alt="Picture with button buttons">
+      </div>
       <div class="radio-buttons">
         <label for="option1">
-          <input type="radio" id="option1" name="options">
+          <a href="/chat-with-teacher" id="BTN" name="options" >
+            <input type="button" id="option1" name="options">
+          </a>FJ05
         </label>
         <label for="option2">
-            <input type="radio" id="option2" name="options">
-          </label>
-          <label for="option3">
-            <input type="radio" id="option3" name="options">
+          <a href="/chat-with-teacher" id="BTN" name="options" >
+            <input type="button" id="option2" name="options">
+          </a>FJ10
+        </label>
+        <label for="option3">
+          <a href="/chat-with-teacher" id="BTN" name="options" >
+            <input type="button" id="option3" name="options">
+          </a>FJ21
         </label>
       </div>
-    </div>
+   </div>
 </div>
 </html>
+{% endblock %}

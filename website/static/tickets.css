@@ -1,63 +1,110 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: rgb(121,99,121);
+  background: radial-gradient(circle, rgba(121,99,121,1) 13%, rgba(32,32,32,1) 100%);
+}
 
-  .wrapper-tickets{
-    margin-top: 80px;
-    position: fixed;
-    width: 1000px;
-    height: 600px;
-    border: 2px outset rgb(233, 233, 233);
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 30px black;
-    justify-content: center;
-    align-items: center;
-    background-color: #aa930d;
-  }
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+.navbar-dark .navbar-nav .nav-link {
+  color: black;
+  position: relative;
+  font-size: 1em;
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 20px;
+}
 
-  .container-tickets {
-    position: relative;
-  }
-  
-  .radio-buttons {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-  }
-  
-  label {
-    position: absolute;
-    cursor: pointer;
-  }
-  
-  /*input[type="radio"] {
-    /*visibility: hidden;
-  }*/
-  
-  label:nth-of-type(1) {
-    top: 50px;
-    left: 30px;
-  }
-  
-  label:nth-of-type(2) {
-    top: 50px;
-    left: 150px;
-  }
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #f8f9fa;
+  font-weight: 600;
+}
 
-  label:nth-of-type(3) {
-    top: 50px;
-    left: 280px;
-  }
+
+.wrapper-tickets{
+  margin-top: 80px;
+  position: fixed;
+  width: 800px;
+  height: 600px;
+  border: 2px outset rgb(131, 126, 126);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px black;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container-tickets{
+  position: relative;
+  margin-top: 10px;
+  margin-left: 300px;
+  padding: 10px;
+}
+
+.teacher {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  object-fit: cover; 
+}
+
+#BTN{
+  position: relative;
+  margin-left: 15px;
+  text-decoration: none;
+  color: aliceblue;
+}
+
+
+.radio-buttons {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+
+label {
+  position: absolute;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 13px;
+  font-weight: 500;
+}
+
+input[type="button"] {
+ visibility: hidden;
+ transform: scale(3);
+ width: 15px;
+}
+
+label:nth-of-type(1) {
+  top: 50px;
+  left: 20px;
+}
+
+label:nth-of-type(2) {
+  top: 50px;
+  left: 140px;
+}
+
+label:nth-of-type(3) {
+  top: 50px;
+  left: 275px;
+}

@@ -33,38 +33,29 @@ def delete_note():
 def tickets():
     return render_template("tickets.html")
 
-@views.route('/gradebook', methods = ["GET", "POST"])
+@views.route('/gradebook', methods=["GET", "POST"])
 @login_required
 def gradebook():
-    if current_user.role == 0:
+    if current_user.role == 0:  # For students
         student_grades = Grades.query.filter_by(student_id=current_user.id).all()
-        grades_dict = {}     
-        for grade in student_grades:
-            if grade.subject not in grades_dict:
-                grades_dict[grade.subject] = []
-            grades_dict[grade.subject].append(grade.grade)
-            db.session.add(grade)
-            db.session.commit()
-            return render_template("gradebook.html", grades = grades_dict, current_user = current_user)
-    else:
-        students = User.query.filter_by(role=0).all()    
+        return render_template("gradebook.html", grades=student_grades, current_user=current_user)
+    else:  # For teachers or admins
+        students = User.query.filter_by(role=0).all()
         if request.method == "POST":
             grade = request.form.get('grade')
-            name = request.form.get('student.first_name')
+            student_id = request.form.get('student_id')  
             subject = request.form.get('subject-select')
-            new_grade = Grades(grade = grade, student_id = name, subject = subject, teacher_id = current_user.first_name)
+            new_grade = Grades(grade=grade, student_id=student_id, subject=subject, teacher_id=current_user.id)
             db.session.add(new_grade)
             db.session.commit()
         return render_template("gradebook.html", current_user=current_user, students=students)
-    
-    return render_template("gradebook.html", current_user = current_user)
 
 
 
 @views.route('/calendar_to_do_list')
 @login_required
 def calendar_to_do_list():
-    return render_template("calendar_to_do_list.html")
+    return render_template("to_do_list.html")
 
 @views.route('/menu', methods=['GET', 'POST'])
 @login_required
@@ -92,5 +83,8 @@ def market_page():
     owned_items = Item.query.join(UserItemRelationship).join(User).filter(UserItemRelationship.user_id == current_user.id).all()
     return render_template('menu.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
 
-
+@views.route('/chat-with-teacher')
+@login_required
+def chat():
+    return render_template('chat.html', current_user=current_user)
 

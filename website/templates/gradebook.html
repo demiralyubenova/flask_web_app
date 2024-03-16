@@ -1,65 +1,49 @@
 {% extends "base.html" %} 
 {% block title %}Gradebook{% endblock %} 
 {% block content %}
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grade book</title>
-    <link rel="stylesheet" href="../static/gradebook.css">
+<link rel="stylesheet" href="../static/gradebook.css">
     <script src="../static/gradebok.js"></script>
-
-</head>
-<body>
-    {% if current_user.role == 1 %}
-    <div>
-        <h1>Grade book</h1>
-        <form id="form-container">
-            <select id="student-select">
-                {% for student in students %}
-                    <option value="{{ student.first_name }}">{{ student.first_name }}</option>
-                {% endfor %}
-            </select>
-            <select id="subject-select">
-                <option value="Maths">Maths</option>
-                <option value="Programming">Programming</option>
-                <option value="Bulgarian Language">Bulgarian Language</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Biology">Biology</option>
-
-            </select>
-            <input type="number" min="2" max="6" id="grade-input" placeholder="Grade">
-            <button type="submit" onclick="addGrade()">Add Grade</button>
-        </form>
+<div>
+    <h1>Grade book</h1>
+    {% if current_user.role == 1 %}  <!-- For teachers or admins -->
+    <div class="wrapper-gradebook">
+      <form method="POST">
+        <select name="student_id">
+            {% for student in students %}
+            <option value="{{ student.id }}">{{ student.first_name }}</option>
+            {% endfor %}
+        </select>
+        <select name="subject-select">
+            <option value="Maths">Maths</option>
+            <option value="Programming">Programming</option>
+            <option value="Bulgarian Language">Bulgarian Language</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Biology">Biology</option>
+        </select>
+        <input type="number" min="2" max="6" name="grade" placeholder="Grade">
+        <button type="submit">Add Grade</button>
+      </form>
     </div>
-    {% else %}
-    <div>
-        <section id="entries">
-            <h1>Grade book</h1>
-            <div class="tbl-header">
-              <table cellpadding="0" cellspacing="0" border="0">
-                <thead>
-                  <tr>
-                    <th>Subject</th>
-                    <th>Grades</th>
-                    <th>Avarege grade</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
-            <div class="tbl-content">
-              <table cellpadding="0" cellspacing="0" border="0" id="gradeTable">
-                <tbody id="entryList">
-                    {% for subject in grades %}
-                     <tr>{{ subject.subject }}</tr>
-                     <tr>{{ subject.grade }}</tr>
-                     {% endfor %}
-                </tbody>
-              </table>
-            </div>
-          </section>
-    </div>
+    {% else %}  <!-- For students -->
+    <table id="grades-table">
+      <h1>Table with grades</h1>
+      <thead>
+          <tr>
+              <th>Student</th>
+              <th>Subject</th>
+              <th>Grade</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for grade in grades %}
+        <tr>
+            <td>{{ current_user.first_name }}</td>
+            <td>{{ grade.subject }}</td>
+            <td>{{ grade.grade }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  
     {% endif %}
-</body>
+</div>
 {% endblock %}
