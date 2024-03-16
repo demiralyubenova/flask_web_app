@@ -19,6 +19,11 @@ h2{
      margin-bottom:-10px;
      color:rgb(243, 241, 241);
 }
+
+.col-8{
+    width: 900px;
+}
+
 .btn-info {
     color: #fff;
     background-color:#4f015b !important;
