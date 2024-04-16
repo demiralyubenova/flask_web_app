@@ -5,7 +5,7 @@
     <script src="../static/gradebok.js"></script>
 <div>
     <h1>Grade book</h1>
-    {% if current_user.role == 1 %}  <!-- For teachers or admins -->
+    {% if current_user.role == 1 %}  
     <div class="wrapper-gradebook">
       <form method="POST">
         <select name="student_id">
@@ -24,7 +24,7 @@
         <button type="submit">Add Grade</button>
       </form>
     </div>
-    {% else %}  <!-- For students -->
+    {% else %}  
     <table id="grades-table">
       <h1>Table with grades</h1>
       <thead>

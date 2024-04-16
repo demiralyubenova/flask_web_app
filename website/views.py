@@ -17,7 +17,7 @@ def home():
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():  
-    note = json.loads(request.data) # this function expects a JSON from the INDEX.js file 
+    note = json.loads(request.data) 
     noteId = note['noteId']
     note = Note.query.get(noteId)
     if note:
@@ -36,10 +36,10 @@ def tickets():
 @views.route('/gradebook', methods=["GET", "POST"])
 @login_required
 def gradebook():
-    if current_user.role == 0:  # For students
+    if current_user.role == 0:  
         student_grades = Grades.query.filter_by(student_id=current_user.id).all()
         return render_template("gradebook.html", grades=student_grades, current_user=current_user)
-    else:  # For teachers or admins
+    else:
         students = User.query.filter_by(role=0).all()
         if request.method == "POST":
             grade = request.form.get('grade')
@@ -63,7 +63,7 @@ def market_page():
     purchase_form = PurchaseItemForm()
     selling_form = SellItemForm()
     if request.method == "POST":
-        #Purchase Item Logic
+        
         purchased_item = request.form.get('purchased_item')
         p_item_object = Item.query.filter_by(name=purchased_item).first()
         if p_item_object:
@@ -72,9 +72,9 @@ def market_page():
                 new_relationship = UserItemRelationship(user_id = current_user.id, item_id = p_item_object.id)
                 db.session.add(new_relationship)
                 db.session.commit()
-                flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}$", category='success')
+                flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}BGN", category='success')
             else:
-                flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}! You have {current_user.budget}$!", category='error')
+                flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}! You have {current_user.budget}BGN!", category='error')
 
         return redirect(url_for('views.market_page'))
 
